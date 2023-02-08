@@ -1,0 +1,172 @@
+node _BetaWidgetState {
+    layout [size: 220.0, 35.0]
+    partitioning.partition: 2
+    portConstraints: FIXED_SIDE
+    label TYPE "ConsumerState"
+    label SOURCE "package:silk_demo_00/beta/beta.widget.dart"
+    port watch {
+          ^port.side: WEST
+            allowNonFlowPortsToSwitchSides: true
+       
+    }
+    port listenManual {
+          ^port.side: WEST
+            allowNonFlowPortsToSwitchSides: true
+       
+    }
+} 
+
+edge betaProvider.watch -> _BetaWidgetState.watch {
+  label "watch"          
+} 
+
+edge alphaProvider.listenManual -> _BetaWidgetState.listenManual {
+  label "listenManual"          
+} 
+
+node betaProvider {
+    layout [size: 220.0, 70.0]
+    partitioning.partition: 1    
+    label TYPE "Provider"
+    label SOURCE "package:silk_demo_00/beta/beta.pod.dart"
+    label OFFSET "1228:1364"
+    label OFFSET "227:237"
+    label AUTODISPOSE "true"
+    label COMMENT "/// See also [beta]."
+    label RETURN "Stream<String>"
+    port watch 
+} 
+
+node alphaProvider {
+    layout [size: 220.0, 70.0]
+    partitioning.partition: 1
+    portConstraints: PortConstraints.FIXED_RATIO    
+    label TYPE "Provider"
+    label SOURCE "package:silk_demo_00/alpha/alpha.pod.dart"
+    label OFFSET "1230:1369"
+    label OFFSET "231:241"
+    label AUTODISPOSE "true"
+    label COMMENT "/// See also [alpha]."
+    label RETURN "String"
+    port listenManual 
+    port read 
+    port watch 
+} 
+
+node Beta {
+  label GROUP "Beta"
+  
+}
+
+node Delta {
+  label GROUP "Delta"
+  
+}
+
+node DeltaWidget {
+    layout [size: 220.0, 35.0]
+    partitioning.partition: 2
+    portConstraints: FIXED_SIDE
+    label TYPE "ConsumerWidget"
+    label SOURCE "package:silk_demo_00/delta/delta.widget.dart"
+    port invalidate {
+          ^port.side: WEST
+            allowNonFlowPortsToSwitchSides: true
+       
+    }
+    port refresh {
+          ^port.side: WEST
+            allowNonFlowPortsToSwitchSides: true
+       
+    }
+} 
+
+edge deltaRmProvider.invalidate -> DeltaWidget.invalidate {
+  label "invalidate"          
+} 
+
+edge deltaAddProvider.refresh -> DeltaWidget.refresh {
+  label "refresh"          
+} 
+
+node deltaRmProvider {
+    layout [size: 220.0, 70.0]
+    partitioning.partition: 1    
+    label TYPE "Provider"
+    label SOURCE "package:silk_demo_00/delta/delta.pod.dart"
+    label OFFSET "1247:1396"
+    label RETURN "double"
+    label METHODS ""
+    label OFFSET "270:271"
+    label invalidateSelf "true"
+    label OFFSET "291:314"
+    label OFFSET "303:313"
+    label OFFSET "341:373"
+    label OFFSET "353:372"
+    label AUTODISPOSE "true"
+    label COMMENT "/// See also [DeltaRm]."
+    label NOTIFIER "double"
+    port invalidate 
+} 
+
+node deltaAddProvider {
+    layout [size: 220.0, 70.0]
+    partitioning.partition: 1    
+    label TYPE "Provider"
+    label SOURCE "package:silk_demo_00/delta/delta.pod.dart"
+    label OFFSET "1725:1877"
+    label RETURN "double"
+    label METHODS ""
+    label OFFSET "519:541"
+    label OFFSET "531:540"
+    label OFFSET "565:594"
+    label OFFSET "577:593"
+    label AUTODISPOSE "true"
+    label COMMENT "/// See also [DeltaAdd]."
+    label NOTIFIER "double"
+    port refresh 
+} 
+
+node Alpha {
+  label GROUP "Alpha"
+  
+}
+
+node AlphaReaderWidget {
+    layout [size: 220.0, 35.0]
+    partitioning.partition: 2
+    portConstraints: FIXED_SIDE
+    label TYPE "ConsumerWidget"
+    label SOURCE "package:silk_demo_00/alpha/alpha.widget.dart"
+    port read {
+          ^port.side: WEST
+            allowNonFlowPortsToSwitchSides: true
+       
+    }
+} 
+
+edge alphaProvider.read -> AlphaReaderWidget.read {
+  label "read"          
+} 
+
+node AlphaWatcherWidget {
+    layout [size: 220.0, 35.0]
+    partitioning.partition: 2
+    portConstraints: FIXED_SIDE
+    label TYPE "ConsumerWidget"
+    label SOURCE "package:silk_demo_00/alpha/alpha.widget.dart"
+    port watch {
+          ^port.side: WEST
+            allowNonFlowPortsToSwitchSides: true
+       
+    }
+} 
+
+edge alphaProvider.watch -> AlphaWatcherWidget.watch {
+  label "watch"          
+} 
+
+edge deltaRmProvider -> deltaRmProvider{
+      label "invalidateSelf"
+} 
+
