@@ -9,7 +9,6 @@ class DeltaWidget extends ConsumerWidget {
 
   @override
   build(_, ref) {
-    ref.invalidate(deltaRmProvider);
     final rs = ref.refresh(deltaAddProvider);
     return Text("Delta");
   }

@@ -29,7 +29,7 @@ class _SystemHash {
   }
 }
 
-String _$DeltaRmHash() => r'a4b80d86ca0c025931506fc6f76ee311a666c6f0';
+String _$DeltaRmHash() => r'534e8225f32c16fd48f79ccd99b74c011d7f612f';
 
 /// See also [DeltaRm].
 final deltaRmProvider = AutoDisposeNotifierProvider<DeltaRm, double>(
@@ -45,7 +45,7 @@ abstract class _$DeltaRm extends AutoDisposeNotifier<double> {
   double build();
 }
 
-String _$DeltaAddHash() => r'93e183d07dbb5c5a224d34085226aa449ddd54df';
+String _$DeltaAddHash() => r'814ab5c94f4b09f23298194a866bd5cc38765787';
 
 /// See also [DeltaAdd].
 final deltaAddProvider = AutoDisposeNotifierProvider<DeltaAdd, double>(

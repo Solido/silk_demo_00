@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'beta.pod.dart';
+part of 'epsilon.pod.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,13 +29,13 @@ class _SystemHash {
   }
 }
 
-String _$betaHash() => r'56a27be9a12e0c6a0e4260ec3a2428ee77234af0';
+String _$epsilonHash() => r'31e3dbd3faa4daf5afa8eb2de6d68aed52d3a205';
 
-/// See also [beta].
-final betaProvider = AutoDisposeProvider<Stream<String>>(
-  beta,
-  name: r'betaProvider',
+/// See also [epsilon].
+final epsilonProvider = AutoDisposeProvider<Stream<double>>(
+  epsilon,
+  name: r'epsilonProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$betaHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$epsilonHash,
 );
-typedef BetaRef = AutoDisposeProviderRef<Stream<String>>;
+typedef EpsilonRef = AutoDisposeProviderRef<Stream<double>>;

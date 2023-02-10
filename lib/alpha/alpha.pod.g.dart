@@ -29,13 +29,13 @@ class _SystemHash {
   }
 }
 
-String _$alphaHash() => r'04cdde49ac436aad44dbfb4d00d145bfd757f33e';
+String _$alphaHash() => r'292244f4714496e51da66a48afe60a422aaaed73';
 
 /// See also [alpha].
-final alphaProvider = AutoDisposeFutureProvider<String>(
+final alphaProvider = AutoDisposeProvider<String>(
   alpha,
   name: r'alphaProvider',
   debugGetCreateSourceHash:
       const bool.fromEnvironment('dart.vm.product') ? null : _$alphaHash,
 );
-typedef AlphaRef = AutoDisposeFutureProviderRef<String>;
+typedef AlphaRef = AutoDisposeProviderRef<String>;

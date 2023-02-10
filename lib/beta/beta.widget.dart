@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:silk_annotation/silk_annotation.dart';
 import 'package:silk_demo_00/beta/beta.pod.dart';
 
 import '../alpha/alpha.pod.dart';
 
-@SilkGroup(name: 'Beta')
 class BetaWidget extends ConsumerStatefulWidget {
   const BetaWidget({super.key});
 

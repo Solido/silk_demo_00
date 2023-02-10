@@ -1,8 +1,11 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:silk_annotation/silk_annotation.dart';
+import 'package:silk_demo_00/omega/omega.pod.dart';
 
 part 'alpha.pod.g.dart';
 
-@SilkGroup(name: 'Alpha')
 @riverpod
-Future<String> alpha(AlphaRef ref) => Future.value("Message");
+String alpha(AlphaRef ref) {
+  ref.listenSelf((previous, next) => print(next));
+  ref.read(omegaProvider);
+  return "Alpha";
+}

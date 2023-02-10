@@ -3,12 +3,13 @@ import 'package:silk_annotation/silk_annotation.dart';
 
 part 'delta.pod.g.dart';
 
+@SilkTheme(color: '#ffba52', textColor: '#4d332c')
 @SilkGroup(name: 'Delta')
 @Riverpod()
 class DeltaRm extends _$DeltaRm {
   @override
   double build() {
-    ref.invalidateSelf();
+    // TODO(robert): Look for ref mark as isolated
     ref.onDispose(() => print("Dispose"));
     ref.onRemoveListener(() => print("Remove listeners"));
     return .1;

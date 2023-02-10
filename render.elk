@@ -1,172 +1,518 @@
 node _BetaWidgetState {
-    layout [size: 220.0, 35.0]
+    layout [size: 210.0, 35.0]
     partitioning.partition: 2
     portConstraints: FIXED_SIDE
     label TYPE "ConsumerState"
     label SOURCE "package:silk_demo_00/beta/beta.widget.dart"
-    port watch {
-          ^port.side: WEST
-            allowNonFlowPortsToSwitchSides: true
-       
+    port watch_in {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: WEST
+     
     }
-    port listenManual {
-          ^port.side: WEST
-            allowNonFlowPortsToSwitchSides: true
-       
+    port listenManual_in {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: WEST
+     
+    }
+    port watch_out {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: EAST
+     
+    }
+    port listenManual_out {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: EAST
+     
     }
 } 
 
-edge betaProvider.watch -> _BetaWidgetState.watch {
+edge betaProvider.watch_out -> _BetaWidgetState.watch_in {
   label "watch"          
 } 
 
-edge alphaProvider.listenManual -> _BetaWidgetState.listenManual {
+edge alphaProvider.listenManual_out -> _BetaWidgetState.listenManual_in {
   label "listenManual"          
 } 
 
+node GammaWidget {
+    layout [size: 210.0, 35.0]
+    partitioning.partition: 2
+    portConstraints: FIXED_SIDE
+    label TYPE "ConsumerWidget"
+    label SOURCE "package:silk_demo_00/gamma/gamma.widget.dart"
+    port invalidate_in {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: WEST
+     
+    }
+    port refresh_in {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: WEST
+     
+    }
+    port invalidate_out {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: EAST
+     
+    }
+    port refresh_out {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: EAST
+     
+    }
+} 
+
+edge gammaProvider.invalidate_out -> GammaWidget.invalidate_in {
+  label "invalidate"          
+} 
+
+edge gammaProvider.refresh_out -> GammaWidget.refresh_in {
+  label "refresh"          
+} 
+
+node OmegaWidget {
+    layout [size: 210.0, 35.0]
+    partitioning.partition: 2
+    portConstraints: FIXED_SIDE
+    label TYPE "ConsumerWidget"
+    label SOURCE "package:silk_demo_00/omega/omega.widget.dart"
+    port watch_in {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: WEST
+     
+    }
+    port watch_out {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: EAST
+     
+    }
+} 
+
+edge omegaProvider.watch_out -> OmegaWidget.watch_in {
+  label "watch"          
+} 
+
+node AlphaR1Widget {
+    layout [size: 210.0, 35.0]
+    partitioning.partition: 2
+    portConstraints: FIXED_SIDE
+    label TYPE "ConsumerWidget"
+    label SOURCE "package:silk_demo_00/alpha/alpha.widget.dart"
+    port read_in {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: WEST
+     
+    }
+    port read_out {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: EAST
+     
+    }
+} 
+
+edge alphaProvider.read_out -> AlphaR1Widget.read_in {
+  label "read"          
+} 
+
+node AlphaR2Widget {
+    layout [size: 210.0, 35.0]
+    partitioning.partition: 2
+    portConstraints: FIXED_SIDE
+    label TYPE "ConsumerWidget"
+    label SOURCE "package:silk_demo_00/alpha/alpha.widget.dart"
+    port read_in {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: WEST
+     
+    }
+    port read_out {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: EAST
+     
+    }
+} 
+
+edge alphaProvider.read_out -> AlphaR2Widget.read_in {
+  label "read"          
+} 
+
+node AlphaR3WidgetState {
+    layout [size: 210.0, 35.0]
+    partitioning.partition: 2
+    portConstraints: FIXED_SIDE
+    label TYPE "ConsumerState"
+    label SOURCE "package:silk_demo_00/alpha/alpha.widget.dart"
+    label color "#00EEAA"
+    label textColor "#006600"
+    port watch_in {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: WEST
+     
+    }
+    port watch_out {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: EAST
+     
+    }
+} 
+
+edge alphaProvider.watch_out -> AlphaR3WidgetState.watch_in {
+  label "watch"          
+} 
+
+node _AlphaR4Widget {
+    layout [size: 210.0, 35.0]
+    partitioning.partition: 2
+    portConstraints: FIXED_SIDE
+    label TYPE "ConsumerWidget"
+    label SOURCE "package:silk_demo_00/alpha/alpha.widget.dart"
+    port watch_in {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: WEST
+     
+    }
+    port listen_in {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: WEST
+     
+    }
+    port watch_out {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: EAST
+     
+    }
+    port listen_out {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: EAST
+     
+    }
+} 
+
+edge alphaProvider.watch_out -> _AlphaR4Widget.watch_in {
+  label "watch"          
+} 
+
+edge alphaProvider.listen_out -> _AlphaR4Widget.listen_in {
+  label "listen"          
+} 
+
 node betaProvider {
-    layout [size: 220.0, 70.0]
-    partitioning.partition: 1    
+    layout [size: 210.0, 70.0]
+    partitioning.partition: 1
+    portConstraints: PortConstraints.FIXED_RATIO    
     label TYPE "Provider"
     label SOURCE "package:silk_demo_00/beta/beta.pod.dart"
     label OFFSET "1228:1364"
-    label OFFSET "227:237"
+    label OFFSET "147:157"
     label AUTODISPOSE "true"
     label COMMENT "/// See also [beta]."
     label RETURN "Stream<String>"
-    port watch 
+    port watch_in {
+        ^port.side: WEST
+     
+    }
+    port watch_out {
+        ^port.side: EAST
+     
+    }
 } 
 
 node alphaProvider {
-    layout [size: 220.0, 70.0]
+    layout [size: 210.0, 70.0]
     partitioning.partition: 1
     portConstraints: PortConstraints.FIXED_RATIO    
     label TYPE "Provider"
     label SOURCE "package:silk_demo_00/alpha/alpha.pod.dart"
-    label OFFSET "1230:1369"
-    label OFFSET "231:241"
+    label OFFSET "1224:1363"
+    label OFFSET "197:229"
+    label listenSelf "true"
+    label OFFSET "223:228"
+    label OFFSET "242:256"
+    label read "true"
     label AUTODISPOSE "true"
     label COMMENT "/// See also [alpha]."
     label RETURN "String"
-    port listenManual 
-    port read 
-    port watch 
+    port listenManual_in {
+        ^port.side: WEST
+     
+    }
+    port read_in {
+        ^port.side: WEST
+     
+    }
+    port watch_in {
+        ^port.side: WEST
+     
+    }
+    port listen_in {
+        ^port.side: WEST
+     
+    }
+    port listenManual_out {
+        ^port.side: EAST
+     
+    }
+    port read_out {
+        ^port.side: EAST
+     
+    }
+    port watch_out {
+        ^port.side: EAST
+     
+    }
+    port listen_out {
+        ^port.side: EAST
+     
+    }
 } 
 
-node Beta {
-  label GROUP "Beta"
-  
-}
+edge omegaProvider.read_out -> alphaProvider.read_in {
+  label "read"
+} 
+
+node gammaProvider {
+    layout [size: 210.0, 70.0]
+    partitioning.partition: 1
+    portConstraints: PortConstraints.FIXED_RATIO    
+    label TYPE "Provider"
+    label SOURCE "package:silk_demo_00/gamma/gamma.pod.dart"
+    label OFFSET "1239:1382"
+    label color "#6652ba"
+    label textColor "#FFEEEE"
+    label RETURN "double"
+    label METHODS ""
+    label OFFSET "291:292"
+    label invalidateSelf "true"
+    label OFFSET "312:335"
+    label onDispose "true"
+    label OFFSET "324:334"
+    label OFFSET "362:394"
+    label onRemoveListener "true"
+    label OFFSET "374:393"
+    label AUTODISPOSE "true"
+    label COMMENT "/// See also [Gamma]."
+    label NOTIFIER "double"
+    port invalidate_in {
+        ^port.side: WEST
+     
+    }
+    port refresh_in {
+        ^port.side: WEST
+     
+    }
+    port invalidate_out {
+        ^port.side: EAST
+     
+    }
+    port refresh_out {
+        ^port.side: EAST
+     
+    }
+} 
+
+node omegaProvider {
+    layout [size: 210.0, 70.0]
+    partitioning.partition: 1
+    portConstraints: PortConstraints.FIXED_RATIO    
+    label TYPE "Provider"
+    label SOURCE "package:silk_demo_00/omega/omega.pod.dart"
+    label OFFSET "1224:1363"
+    label OFFSET "202:203"
+    label notifyListeners "true"
+    label OFFSET "217:256"
+    label watch "true"
+    label OFFSET "238:255"
+    label AUTODISPOSE "true"
+    label COMMENT "/// See also [omega]."
+    label RETURN "String"
+    port watch_in {
+        ^port.side: WEST
+     
+    }
+    port read_in {
+        ^port.side: WEST
+     
+    }
+    port watch_out {
+        ^port.side: EAST
+     
+    }
+    port read_out {
+        ^port.side: EAST
+     
+    }
+} 
+
+edge alphaProvider.watch_out -> omegaProvider.watch_in {
+  label "watch"
+} 
 
 node Delta {
-  label GROUP "Delta"
-  
-}
-
-node DeltaWidget {
-    layout [size: 220.0, 35.0]
+  label GROUP "Delta" {
+    layout [ size: 100, 20 ]
+    nodeLabels.placement: "OUTSIDE V_TOP H_LEFT"
+  }
+  node DeltaWidget {
+    layout [size: 210.0, 35.0]
     partitioning.partition: 2
     portConstraints: FIXED_SIDE
     label TYPE "ConsumerWidget"
     label SOURCE "package:silk_demo_00/delta/delta.widget.dart"
-    port invalidate {
-          ^port.side: WEST
-            allowNonFlowPortsToSwitchSides: true
-       
+    port refresh_in {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: WEST
+     
     }
-    port refresh {
-          ^port.side: WEST
-            allowNonFlowPortsToSwitchSides: true
-       
+    port refresh_out {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: EAST
+     
     }
 } 
 
-edge deltaRmProvider.invalidate -> DeltaWidget.invalidate {
-  label "invalidate"          
-} 
-
-edge deltaAddProvider.refresh -> DeltaWidget.refresh {
+edge Delta.deltaAddProvider.refresh_out -> Delta.DeltaWidget.refresh_in {
   label "refresh"          
 } 
 
-node deltaRmProvider {
-    layout [size: 220.0, 70.0]
-    partitioning.partition: 1    
-    label TYPE "Provider"
-    label SOURCE "package:silk_demo_00/delta/delta.pod.dart"
-    label OFFSET "1247:1396"
-    label RETURN "double"
-    label METHODS ""
-    label OFFSET "270:271"
-    label invalidateSelf "true"
-    label OFFSET "291:314"
-    label OFFSET "303:313"
-    label OFFSET "341:373"
-    label OFFSET "353:372"
-    label AUTODISPOSE "true"
-    label COMMENT "/// See also [DeltaRm]."
-    label NOTIFIER "double"
-    port invalidate 
-} 
-
 node deltaAddProvider {
-    layout [size: 220.0, 70.0]
-    partitioning.partition: 1    
+    layout [size: 210.0, 70.0]
+    partitioning.partition: 1
+    portConstraints: PortConstraints.FIXED_RATIO    
     label TYPE "Provider"
     label SOURCE "package:silk_demo_00/delta/delta.pod.dart"
     label OFFSET "1725:1877"
     label RETURN "double"
     label METHODS ""
-    label OFFSET "519:541"
-    label OFFSET "531:540"
-    label OFFSET "565:594"
-    label OFFSET "577:593"
+    label OFFSET "595:617"
+    label onResume "true"
+    label OFFSET "607:616"
+    label OFFSET "641:670"
+    label onAddListener "true"
+    label OFFSET "653:669"
     label AUTODISPOSE "true"
     label COMMENT "/// See also [DeltaAdd]."
     label NOTIFIER "double"
-    port refresh 
+    port refresh_in {
+        ^port.side: WEST
+     
+    }
+    port read_in {
+        ^port.side: WEST
+     
+    }
+    port refresh_out {
+        ^port.side: EAST
+     
+    }
+    port read_out {
+        ^port.side: EAST
+     
+    }
 } 
 
-node Alpha {
-  label GROUP "Alpha"
-  
+
 }
 
-node AlphaReaderWidget {
-    layout [size: 220.0, 35.0]
+node Epsilon {
+  label GROUP "Epsilon" {
+    layout [ size: 100, 20 ]
+    nodeLabels.placement: "OUTSIDE V_TOP H_LEFT"
+  }
+  node EpsilonW3 {
+    layout [size: 210.0, 35.0]
     partitioning.partition: 2
     portConstraints: FIXED_SIDE
     label TYPE "ConsumerWidget"
-    label SOURCE "package:silk_demo_00/alpha/alpha.widget.dart"
-    port read {
-          ^port.side: WEST
-            allowNonFlowPortsToSwitchSides: true
-       
+    label SOURCE "package:silk_demo_00/epsilon/epsion.widget.dart"
+    port watch_in {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: WEST
+     
+    }
+    port watch_out {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: EAST
+     
     }
 } 
 
-edge alphaProvider.read -> AlphaReaderWidget.read {
-  label "read"          
-} 
-
-node AlphaWatcherWidget {
-    layout [size: 220.0, 35.0]
-    partitioning.partition: 2
-    portConstraints: FIXED_SIDE
-    label TYPE "ConsumerWidget"
-    label SOURCE "package:silk_demo_00/alpha/alpha.widget.dart"
-    port watch {
-          ^port.side: WEST
-            allowNonFlowPortsToSwitchSides: true
-       
-    }
-} 
-
-edge alphaProvider.watch -> AlphaWatcherWidget.watch {
+edge Epsilon.epsilonProvider.watch_out -> Epsilon.EpsilonW3.watch_in {
   label "watch"          
 } 
 
-edge deltaRmProvider -> deltaRmProvider{
+node EpsilonW2 {
+    layout [size: 210.0, 35.0]
+    partitioning.partition: 2
+    portConstraints: FIXED_SIDE
+    label TYPE "ConsumerWidget"
+    label SOURCE "package:silk_demo_00/epsilon/epsion.widget.dart"
+    port listenManual_in {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: WEST
+     
+    }
+    port listenManual_out {
+        allowNonFlowPortsToSwitchSides: true
+        ^port.side: EAST
+     
+    }
+} 
+
+edge Epsilon.epsilonProvider.listenManual_out -> Epsilon.EpsilonW2.listenManual_in {
+  label "listenManual"          
+} 
+
+node epsilonProvider {
+    layout [size: 210.0, 70.0]
+    partitioning.partition: 1
+    portConstraints: PortConstraints.FIXED_RATIO    
+    label TYPE "Provider"
+    label SOURCE "package:silk_demo_00/epsilon/epsilon.pod.dart"
+    label OFFSET "1240:1385"
+    label OFFSET "288:305"
+    label read "true"
+    label OFFSET "329:332"
+    label AUTODISPOSE "true"
+    label COMMENT "/// See also [epsilon]."
+    label RETURN "Stream<double>"
+    port watch_in {
+        ^port.side: WEST
+     
+    }
+    port listenManual_in {
+        ^port.side: WEST
+     
+    }
+    port read_in {
+        ^port.side: WEST
+     
+    }
+    port watch_out {
+        ^port.side: EAST
+     
+    }
+    port listenManual_out {
+        ^port.side: EAST
+     
+    }
+    port read_out {
+        ^port.side: EAST
+     
+    }
+} 
+
+edge Delta.deltaAddProvider.read_out -> Epsilon.epsilonProvider.read_in {
+  label "read"
+} 
+
+
+}
+
+edge gammaProvider -> gammaProvider{
       label "invalidateSelf"
+} 
+
+edge alphaProvider -> alphaProvider{
+      label "listenSelf"
 } 
 

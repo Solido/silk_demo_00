@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'beta.pod.dart';
+part of 'omega.pod.dart';
 
 // **************************************************************************
 // RiverpodGenerator
@@ -29,13 +29,13 @@ class _SystemHash {
   }
 }
 
-String _$betaHash() => r'56a27be9a12e0c6a0e4260ec3a2428ee77234af0';
+String _$omegaHash() => r'01eecf3ed19116e9e9bcc0d76891e1bac8e742f0';
 
-/// See also [beta].
-final betaProvider = AutoDisposeProvider<Stream<String>>(
-  beta,
-  name: r'betaProvider',
+/// See also [omega].
+final omegaProvider = AutoDisposeProvider<String>(
+  omega,
+  name: r'omegaProvider',
   debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product') ? null : _$betaHash,
+      const bool.fromEnvironment('dart.vm.product') ? null : _$omegaHash,
 );
-typedef BetaRef = AutoDisposeProviderRef<Stream<String>>;
+typedef OmegaRef = AutoDisposeProviderRef<String>;
